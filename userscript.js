@@ -5,6 +5,7 @@
 // @include http://www.boiteajeux.net/jeux/dix/partie.php*
 // @require http://www.boiteajeux.net/includes/jquery-1.7.2.min.js
 // @copyright  2014
+// ==/UserScript==
 
 // Cards dir (no trailing slash)
 var cardsBaseUrl = 'http://example.com/dixit-cards-dir';
@@ -134,6 +135,4 @@ $(function() {
             $(el).attr('onmouseover', newOnmouseover);
         });
 });
-
-// ==/UserScript==
     
