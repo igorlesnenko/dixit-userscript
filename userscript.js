@@ -3,6 +3,7 @@
 // @version    1.0
 // @description  Edit script params to play your own deck
 // @include http://www.boiteajeux.net/jeux/dix/partie.php*
+// @require http://www.boiteajeux.net/includes/jquery-1.7.2.min.js
 // @copyright  2014
 
 // Cards dir (no trailing slash)
