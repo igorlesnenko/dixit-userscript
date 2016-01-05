@@ -8,7 +8,7 @@
 // ==/UserScript==
 
 // Cards dir (no trailing slash)
-var cardsBaseUrl = 'http://example.com/dixit-cards-dir';
+var cardsBaseUrl = 'http://cardsbaseurl';
 
 // Number of cards in dir
 var totalCards = 344;
@@ -104,6 +104,17 @@ $(function() {
         $("#dvGdeCarte").html('<img src="' + cardsBaseUrl + '/' + i + '.' + imgExtension + '">');
         $("#dvGdeCarte").show();
     }
+    
+    // Set opacity for all elements to prevent misunderstanding in case of slow connection
+    $('img')
+        .filter(function() {
+            return $(this).attr('src').match(/[0-9]+\.png/);
+        }).each(function(i, el) {
+           $(el).css('opacity', '0.1');
+           $(el).on('load', function() {
+               $(this).css('opacity', '1');
+           });
+        });
 
     $('img')
         .filter(function() {
@@ -111,7 +122,7 @@ $(function() {
         }).each(function(i, el) {
             // Get src
             var src = $(el).attr('src');
-            
+
             // get onmouseover
             var onmouseover = $(el).attr('onmouseover');
             
@@ -129,10 +140,10 @@ $(function() {
             
             $(el).attr('src', newSrc);
             
-            // Replace onmouseover
-            var newOnmouseover = onmouseover.replace(originalCardId, newCardId);
-            
-            $(el).attr('onmouseover', newOnmouseover);
+            // Replace onmouseover if exists
+            if (onmouseover) {
+                var newOnmouseover = onmouseover.replace(originalCardId, newCardId);
+                $(el).attr('onmouseover', newOnmouseover);
+            }
         });
 });
-    
